@@ -24,6 +24,22 @@ public class MyGlobalExceptionHandler {
             response.put(fieldName,message);
     });
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 
-}
+
+    //below are the custom exception (user defined exception)
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> myResourceNotFoundException(ResourceNotFoundException e){
+
+        String message = e.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+
+    @ExceptionHandler (APIException.class)
+    public ResponseEntity<String> myAPIException (APIException e){
+        String message = e.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
 }
