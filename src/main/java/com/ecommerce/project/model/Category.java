@@ -29,7 +29,7 @@ public class Category {
 
     // validation annotation
     @NotBlank
-    @Size(min=3, message = "Category name mush contain 3 characters")
+    @Size(min=3, message = "Category name must contain atleast 3 characters")
 
     private String categoryName;
 
