@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class ProductController {
 
-//    We have three mappings in project
-
     @Autowired
     ProductService productService;
     @Autowired
