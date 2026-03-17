@@ -1,6 +1,5 @@
 package com.ecommerce.project.controller;
 
-import com.ecommerce.project.model.Product;
 import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.payload.ProductResponse;
 import com.ecommerce.project.repositories.CategoryRepository;
@@ -20,9 +19,9 @@ public class ProductController {
     private CategoryRepository categoryRepository;
 
     @PostMapping("/admin/categories/{categoryId}/product")
-    public ResponseEntity<ProductDTO> addProduct(@RequestBody Product product,
+    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO productDTO,
                                                  @PathVariable Long categoryId){
-        ProductDTO productDTO = productService.addProduct(categoryId, product);
+        ProductDTO savedProductDTO = productService.addProduct(categoryId, productDTO);
         return new ResponseEntity<>(productDTO, HttpStatus.CREATED);
     }
 
@@ -45,10 +44,10 @@ public class ProductController {
     }
 
     @PutMapping("/admin/products/{productId}")
-    public ResponseEntity<ProductDTO> updateProduct(@RequestBody Product product,
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO productDTO,
                                                          @PathVariable Long productId){
 
-        ProductDTO updatedProductDTO=productService.updateProduct(productId,product);
+        ProductDTO updatedProductDTO=productService.updateProduct(productId,productDTO);
         return new ResponseEntity<>(updatedProductDTO, HttpStatus.OK);
     }
 
